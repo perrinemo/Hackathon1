@@ -10,7 +10,7 @@ import android.os.Parcelable;
 
 public class HeroModel implements Parcelable {
 
-    private Drawable image;
+    private int image;
     private String name;
     private String genre;
     private int durability;
@@ -19,7 +19,7 @@ public class HeroModel implements Parcelable {
     private int inteligence;
 
 
-    public HeroModel(Drawable image, String name, String genre, int durability, int combat) {
+    public HeroModel(int image, String name, String genre, int durability, int combat) {
         this.image = image;
         this.name = name;
         this.genre = genre;
@@ -27,8 +27,8 @@ public class HeroModel implements Parcelable {
         this.combat = combat;
     }
 
-    public Drawable getImage() {return image;}
-    public void setImage(Drawable image) {this.image = image;}
+    public int getImage() {return image;}
+    public void setImage(int image) {this.image = image;}
 
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
