@@ -48,13 +48,30 @@ public class HeroModel implements Parcelable {
     public int getInteligence() {return inteligence;}
     public void setInteligence(int inteligence) {this.inteligence = inteligence;}
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(image);
+        dest.writeString(name);
+        dest.writeString(genre);
+        dest.writeInt(durability);
+        dest.writeInt(combat);
+        dest.writeInt(speed);
+        dest.writeInt(inteligence);
+    }
 
     protected HeroModel(Parcel in) {
+        image = in.readInt();
         name = in.readString();
         genre = in.readString();
         durability = in.readInt();
         combat = in.readInt();
+        speed = in.readInt();
+        inteligence = in.readInt();
     }
 
     public static final Creator<HeroModel> CREATOR = new Creator<HeroModel>() {
@@ -68,17 +85,4 @@ public class HeroModel implements Parcelable {
             return new HeroModel[size];
         }
     };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(genre);
-        parcel.writeInt(durability);
-        parcel.writeInt(combat);
-    }
 }
