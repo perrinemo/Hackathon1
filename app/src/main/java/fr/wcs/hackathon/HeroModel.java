@@ -10,7 +10,7 @@ import android.os.Parcelable;
 
 public class HeroModel implements Parcelable {
 
-    private Drawable image;
+    private int image;
     private String name;
     private String genre;
     private int durability;
@@ -19,7 +19,7 @@ public class HeroModel implements Parcelable {
     private int inteligence;
 
 
-    public HeroModel(Drawable image, String name, String genre, int durability, int combat) {
+    public HeroModel(int image, String name, String genre, int durability, int combat) {
         this.image = image;
         this.name = name;
         this.genre = genre;
@@ -27,8 +27,8 @@ public class HeroModel implements Parcelable {
         this.combat = combat;
     }
 
-    public Drawable getImage() {return image;}
-    public void setImage(Drawable image) {this.image = image;}
+    public int getImage() {return image;}
+    public void setImage(int image) {this.image = image;}
 
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
@@ -48,13 +48,30 @@ public class HeroModel implements Parcelable {
     public int getInteligence() {return inteligence;}
     public void setInteligence(int inteligence) {this.inteligence = inteligence;}
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(image);
+        dest.writeString(name);
+        dest.writeString(genre);
+        dest.writeInt(durability);
+        dest.writeInt(combat);
+        dest.writeInt(speed);
+        dest.writeInt(inteligence);
+    }
 
     protected HeroModel(Parcel in) {
+        image = in.readInt();
         name = in.readString();
         genre = in.readString();
         durability = in.readInt();
         combat = in.readInt();
+        speed = in.readInt();
+        inteligence = in.readInt();
     }
 
     public static final Creator<HeroModel> CREATOR = new Creator<HeroModel>() {
@@ -68,17 +85,4 @@ public class HeroModel implements Parcelable {
             return new HeroModel[size];
         }
     };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(genre);
-        parcel.writeInt(durability);
-        parcel.writeInt(combat);
-    }
 }
