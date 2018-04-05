@@ -1,6 +1,7 @@
 package fr.wcs.hackathon;
 
 import android.content.Intent;
+import android.service.notification.NotificationListenerService;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -20,19 +21,25 @@ public class CombatActivity extends AppCompatActivity {
     TextView textLifeP2;
     TextView textDegatP1;
     TextView textDegatP2;
+    ImageView ivP1;
+    ImageView ivP2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
 
+        final LinearLayout combatPlayer1 = findViewById(R.id.combat_p1);
+        final LinearLayout combatPlayer2 = findViewById(R.id.combat_p2);
+
         textLifeP1 = findViewById(R.id.text_life_p1);
         textLifeP2 = findViewById(R.id.text_life_p2);
         textDegatP1 = findViewById(R.id.text_degat_p1);
         textDegatP2 = findViewById(R.id.text_degat_p2);
 
-        ImageView ivP1 = findViewById(R.id.img_player_one);
-        ImageView ivP2 = findViewById(R.id.img_player_two);
+        ivP1 = findViewById(R.id.img_player_one);
+        ivP2 = findViewById(R.id.img_player_two);
 
         final int lifeP1 = 92;
         final int lifeP2 = 52;
@@ -40,7 +47,7 @@ public class CombatActivity extends AppCompatActivity {
         textLifeP1.setText(String.valueOf(lifeP1));
         textLifeP2.setText(String.valueOf(lifeP2));
 
-        final int combatP1 = 15;
+        final int combatP1 = 5;
         final int combatP2 = 7;
 
         final HeroModel player1 = new HeroModel(lifeP1, combatP1);
@@ -51,6 +58,8 @@ public class CombatActivity extends AppCompatActivity {
         btnFight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                combatPlayer1.setVisibility(View.VISIBLE);
+                combatPlayer2.setVisibility(View.VISIBLE);
                 if (player1.getDurability() > 0 && player2.getDurability() > 0) {
                     fight(player1, player2);
                 } else {
@@ -68,38 +77,56 @@ public class CombatActivity extends AppCompatActivity {
     }
 
     public void fight(HeroModel player1, HeroModel player2) {
-
+/*
         LinearLayout linearLayoutP1 = findViewById(R.id.combat_p1);
         LinearLayout linearLayoutP2 = findViewById(R.id.combat_p2);
 
-/*
-        DisplayMetrics displayMetrics = linearLayoutP1.getResources().getDisplayMetrics();
-        float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
-        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
 
-        int y = (int) dpHeight;
-        int x = (int) dpWidth;
+        int y = ivP1.getWidth();
+        int x = ivP1.getHeight();
 
         Random r = new Random();
-        int i2 = r.nextInt(y);
+        int i2 = r.nextInt(800 - y);
 
         Random t = new Random();
-        int i1 = t.nextInt(x / 2);
+        int i1 = t.nextInt(500 - x);
 
         linearLayoutP1.setX(i1);
         linearLayoutP1.setY(i2);
+
 */
 
+        ImageView boom1 = findViewById(R.id.img_degat_p1);
+        ImageView boom2 = findViewById(R.id.img_degat_p2);
 
+        Random degats = new Random();
+        int p1Degat = degats.nextInt(player1.getCombat());
+        int p2Degat = degats.nextInt(player2.getCombat());
+
+        player2.setDurability(player2.getDurability() - p1Degat);
+        if (p1Degat == 0) {
+            textDegatP2.setText(R.string.esquive);
+            boom2.setVisibility(View.INVISIBLE);
+        } else {
+            textDegatP2.setText(getString(R.string.degat, String.valueOf(p1Degat)));
+            boom2.setVisibility(View.VISIBLE);
+        }
         textLifeP2.setText(String.valueOf(player2.getDurability()));
-        player2.setDurability(player2.getDurability() - player1.getCombat());
-        textDegatP2.setText(getString(R.string.degat, String.valueOf(player1.getCombat())));
+
         if (player2.getDurability() <= 0) {
             textLifeP2.setText(String.valueOf(0));
         } else {
-            player1.setDurability(player1.getDurability() - player2.getCombat());
+            player1.setDurability(player1.getDurability() - p2Degat);
+
+            if (p2Degat == 0) {
+                textDegatP1.setText(R.string.esquive);
+                boom1.setVisibility(View.INVISIBLE);
+            } else {
+                textDegatP1.setText(getString(R.string.degat, String.valueOf(p2Degat)));
+                boom1.setVisibility(View.VISIBLE);
+            }
             textLifeP1.setText(String.valueOf(player1.getDurability()));
-            textDegatP1.setText(getString(R.string.degat, String.valueOf(player2.getCombat())));
+
             if (player1.getDurability() <= 0) {
                 textLifeP1.setText(String.valueOf(0));
             }
