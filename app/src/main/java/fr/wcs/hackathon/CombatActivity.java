@@ -106,7 +106,10 @@ public class CombatActivity extends AppCompatActivity {
         player2.setDurability(player2.getDurability() - p1Degat);
         if (p1Degat == 0) {
             textDegatP2.setText(R.string.esquive);
-            boom2.setVisibility(View.INVISIBLE);
+            boom2.setVisibility(View.GONE);
+        } else if (p1Degat == player1.getCombat() -1) {
+            textDegatP2.setText(R.string.coup_critique);
+            boom2.setVisibility(View.GONE);
         } else {
             textDegatP2.setText(getString(R.string.degat, String.valueOf(p1Degat)));
             boom2.setVisibility(View.VISIBLE);
@@ -120,7 +123,10 @@ public class CombatActivity extends AppCompatActivity {
 
             if (p2Degat == 0) {
                 textDegatP1.setText(R.string.esquive);
-                boom1.setVisibility(View.INVISIBLE);
+                boom1.setVisibility(View.GONE);
+            } else if (p2Degat == player2.getCombat() - 1) {
+                textDegatP1.setText(R.string.coup_critique);
+                boom1.setVisibility(View.GONE);
             } else {
                 textDegatP1.setText(getString(R.string.degat, String.valueOf(p2Degat)));
                 boom1.setVisibility(View.VISIBLE);
