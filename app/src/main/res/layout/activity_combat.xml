@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +32,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/coeurpix" />
 
+        <ImageView
+            android:id="@+id/img_critique_1"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="8dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/boompix" />
+
         <TextView
             android:id="@+id/text_life_p1"
             android:layout_width="wrap_content"
@@ -47,7 +60,7 @@
             android:id="@+id/combat_p1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="110dp"
+            android:layout_marginLeft="110dp"
             android:layout_marginTop="135dp"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,6 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
                 android:textSize="10sp"
                 tools:text="-25" />
 
@@ -82,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="100dp"
+            android:layout_marginRight="100dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -99,6 +114,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/coeurpix" />
 
+        <ImageView
+            android:id="@+id/img_critique_2"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="8dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/boompix" />
+
         <TextView
             android:id="@+id/text_life_p2"
             android:layout_width="wrap_content"
@@ -114,26 +142,28 @@
             android:id="@+id/combat_p2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="110dp"
+            android:layout_marginRight="110dp"
             android:layout_marginTop="135dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:visibility="invisible">
 
-            <TextView
-                android:id="@+id/text_degat_p2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="10sp"
-                tools:text="-25" />
-
             <ImageView
                 android:id="@+id/img_degat_p2"
                 android:layout_width="25sp"
                 android:layout_height="23dp"
                 app:srcCompat="@drawable/boompix" />
+
+            <TextView
+                android:id="@+id/text_degat_p2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="10sp"
+                tools:text="-25" />
 
         </LinearLayout>
 

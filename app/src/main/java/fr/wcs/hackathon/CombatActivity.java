@@ -99,6 +99,9 @@ public class CombatActivity extends AppCompatActivity {
         ImageView boom1 = findViewById(R.id.img_degat_p1);
         ImageView boom2 = findViewById(R.id.img_degat_p2);
 
+        ImageView critique1 = findViewById(R.id.img_critique_1);
+        ImageView critique2 = findViewById(R.id.img_critique_2);
+
         Random degats = new Random();
         int p1Degat = degats.nextInt(player1.getCombat());
         int p2Degat = degats.nextInt(player2.getCombat());
@@ -107,12 +110,15 @@ public class CombatActivity extends AppCompatActivity {
         if (p1Degat == 0) {
             textDegatP2.setText(R.string.esquive);
             boom2.setVisibility(View.GONE);
+            critique2.setVisibility(View.INVISIBLE);
         } else if (p1Degat == player1.getCombat() -1) {
             textDegatP2.setText(R.string.coup_critique);
             boom2.setVisibility(View.GONE);
+            critique2.setVisibility(View.VISIBLE);
         } else {
             textDegatP2.setText(getString(R.string.degat, String.valueOf(p1Degat)));
             boom2.setVisibility(View.VISIBLE);
+            critique2.setVisibility(View.INVISIBLE);
         }
         textLifeP2.setText(String.valueOf(player2.getDurability()));
 
@@ -124,12 +130,15 @@ public class CombatActivity extends AppCompatActivity {
             if (p2Degat == 0) {
                 textDegatP1.setText(R.string.esquive);
                 boom1.setVisibility(View.GONE);
+                critique1.setVisibility(View.INVISIBLE);
             } else if (p2Degat == player2.getCombat() - 1) {
                 textDegatP1.setText(R.string.coup_critique);
                 boom1.setVisibility(View.GONE);
+                critique1.setVisibility(View.VISIBLE);
             } else {
                 textDegatP1.setText(getString(R.string.degat, String.valueOf(p2Degat)));
                 boom1.setVisibility(View.VISIBLE);
+                critique1.setVisibility(View.INVISIBLE);
             }
             textLifeP1.setText(String.valueOf(player1.getDurability()));
 
