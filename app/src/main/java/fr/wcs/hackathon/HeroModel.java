@@ -1,6 +1,5 @@
 package fr.wcs.hackathon;
 
-import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -10,25 +9,27 @@ import android.os.Parcelable;
 
 public class HeroModel implements Parcelable {
 
-    private int image;
+    private String image;
     private String name;
     private String genre;
     private int durability;
     private int combat;
     private int speed;
-    private int inteligence;
+    private int intelligence;
 
 
-    public HeroModel(int image, String name, String genre, int durability, int combat) {
+    public HeroModel(String image, String name, String genre, int durability, int combat, int speed, int intelligence) {
         this.image = image;
         this.name = name;
         this.genre = genre;
         this.durability = durability;
         this.combat = combat;
+        this.speed = speed;
+        this.intelligence = intelligence;
     }
 
-    public int getImage() {return image;}
-    public void setImage(int image) {this.image = image;}
+    public String getImage() {return image;}
+    public void setImage(String image) {this.image = image;}
 
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
@@ -45,8 +46,8 @@ public class HeroModel implements Parcelable {
     public int getSpeed() {return speed;}
     public void setSpeed(int speed) {this.speed = speed;}
 
-    public int getInteligence() {return inteligence;}
-    public void setInteligence(int inteligence) {this.inteligence = inteligence;}
+    public int getIntelligence() {return intelligence;}
+    public void setIntelligence(int intelligence) {this.intelligence = intelligence;}
 
     @Override
     public int describeContents() {
@@ -55,23 +56,23 @@ public class HeroModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(image);
+        dest.writeString(image);
         dest.writeString(name);
         dest.writeString(genre);
         dest.writeInt(durability);
         dest.writeInt(combat);
         dest.writeInt(speed);
-        dest.writeInt(inteligence);
+        dest.writeInt(intelligence);
     }
 
     protected HeroModel(Parcel in) {
-        image = in.readInt();
+        image = in.readString();
         name = in.readString();
         genre = in.readString();
         durability = in.readInt();
         combat = in.readInt();
         speed = in.readInt();
-        inteligence = in.readInt();
+        intelligence = in.readInt();
     }
 
     public static final Creator<HeroModel> CREATOR = new Creator<HeroModel>() {

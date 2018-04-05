@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 
 /**
@@ -34,12 +35,12 @@ public class ListAdapter extends ArrayAdapter<HeroModel>{
         TextView heroIntel = convertView.findViewById(R.id.tv_intel);
 
 
-        heroImage.setImageResource(hero.getImage());
+       // Glide.with(getContext()).load(hero.getImage()).into(heroImage);
         heroName.setText(hero.getName());
         heroDurability.setText(String.valueOf(hero.getDurability()));
         heroCombat.setText(String.valueOf(hero.getCombat()));
         heroSpeed.setText(String.valueOf(hero.getSpeed()));
-        heroIntel.setText(String.valueOf(hero.getInteligence()));
+        heroIntel.setText(String.valueOf(hero.getIntelligence()));
         return convertView;
 
     }
