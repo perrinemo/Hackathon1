@@ -33,16 +33,12 @@ public class CombatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
-
-
-        final MediaPlayer fightSound = MediaPlayer.create(this, R.raw.fight);
+        MediaPlayer fightsound = MediaPlayer.create(this, R.raw.fightsound);
+        MediaPlayer combatSound = MediaPlayer.create(this, R.raw.combat);
+        fightsound.start();
+        combatSound.start();
         Button btnFight = findViewById(R.id.btn_fight);
-        btnFight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fightSound.start();
-            }
-        });
+
 
         textLifeP1 = findViewById(R.id.text_life_p1);
         textLifeP2 = findViewById(R.id.text_life_p2);
