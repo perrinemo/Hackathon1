@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     img1 = hero.getImage();
 
                 } else {
+                    mP1Selected = false;
                     player2.setText(hero.getName());
                     Glide.with(MainActivity.this).load(hero.getImage()).into(playerTwoImage);
                     dur2 = hero.getDurability();
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     img1 = hero.getImage();
 
                 } else {
+                    mP1Selected = false;
                     player2.setText(hero.getName());
                     Glide.with(MainActivity.this).load(hero.getImage()).into(playerTwoImage);
                     dur2 = hero.getDurability();
@@ -117,11 +119,14 @@ public class MainActivity extends AppCompatActivity {
                     combat1 = hero.getCombat();
                     img1 = hero.getImage();
                 } else {
+                    mP1Selected = false;
                     player2.setText(hero.getName());
                     Glide.with(MainActivity.this).load(hero.getImage()).into(playerTwoImage);
                     dur2 = hero.getDurability();
                     combat2 = hero.getCombat();
                     img2 = hero.getImage();
+                    mP1Selected = false;
+
                 }
 
             }
@@ -229,7 +234,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button btnGo = findViewById(R.id.btn_go);
-        Button btnReset = findViewById(R.id.bt_reset);
 
 
         FontHelper.setFont(player1, "pix.ttf");
@@ -237,7 +241,6 @@ public class MainActivity extends AppCompatActivity {
         FontHelper.setFont(btnGo, "pix.ttf");
         FontHelper.setFont(checkfemale, "pix.ttf");
         FontHelper.setFont(checkmale, "pix.ttf");
-        FontHelper.setFont(btnReset, "pix.ttf");
 
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
