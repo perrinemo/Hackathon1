@@ -52,10 +52,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="76dp"
         android:text="TextView"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:text="Looser" />
@@ -64,19 +65,21 @@
         android:id="@+id/imageView8"
         android:layout_width="98dp"
         android:layout_height="93dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="76dp"
         android:rotationY="40"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:srcCompat="@drawable/troph_"
-        tools:layout_editor_absoluteX="60dp" />
+        app:srcCompat="@drawable/troph_" />
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="69dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:srcCompat="@drawable/dead2"
-        tools:layout_editor_absoluteX="77dp" />
+        app:srcCompat="@drawable/dead2" />
 
 </android.support.constraint.ConstraintLayout>
