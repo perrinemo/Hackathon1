@@ -1,6 +1,7 @@
 package fr.wcs.hackathon;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -39,6 +40,12 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public boolean mP1Selected = false;
+    int dur1;
+    int combat1;
+    int dur2;
+    int combat2;
+    String img1;
+    String img2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +70,17 @@ public class MainActivity extends AppCompatActivity {
                     mP1Selected = true;
                     player1.setText(hero.getName());
                     Glide.with(MainActivity.this).load(hero.getImage()).into(playerOneImage);
+                    dur1 = hero.getDurability();
+                    combat1 = hero.getCombat();
+                    img1 = hero.getImage();
+
                 } else {
                     player2.setText(hero.getName());
                     Glide.with(MainActivity.this).load(hero.getImage()).into(playerTwoImage);
+                    dur2 = hero.getDurability();
+                    combat2 = hero.getCombat();
+                    img2 = hero.getImage();
+
                 }
             }
         });
@@ -76,9 +91,17 @@ public class MainActivity extends AppCompatActivity {
                     mP1Selected = true;
                     player1.setText(hero.getName());
                     Glide.with(MainActivity.this).load(hero.getImage()).into(playerOneImage);
+                    dur1 = hero.getDurability();
+                    combat1 = hero.getCombat();
+                    img1 = hero.getImage();
+
                 } else {
                     player2.setText(hero.getName());
                     Glide.with(MainActivity.this).load(hero.getImage()).into(playerTwoImage);
+                    dur2 = hero.getDurability();
+                    combat2 = hero.getCombat();
+                    img2 = hero.getImage();
+
                 }
 
             }
@@ -90,9 +113,15 @@ public class MainActivity extends AppCompatActivity {
                     mP1Selected = true;
                     player1.setText(hero.getName());
                     Glide.with(MainActivity.this).load(hero.getImage()).into(playerOneImage);
+                    dur1 = hero.getDurability();
+                    combat1 = hero.getCombat();
+                    img1 = hero.getImage();
                 } else {
                     player2.setText(hero.getName());
                     Glide.with(MainActivity.this).load(hero.getImage()).into(playerTwoImage);
+                    dur2 = hero.getDurability();
+                    combat2 = hero.getCombat();
+                    img2 = hero.getImage();
                 }
 
             }
@@ -200,11 +229,34 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button btnGo = findViewById(R.id.btn_go);
+        Button btnReset = findViewById(R.id.bt_reset);
+
 
         FontHelper.setFont(player1, "pix.ttf");
         FontHelper.setFont(player2, "pix.ttf");
         FontHelper.setFont(btnGo, "pix.ttf");
         FontHelper.setFont(checkfemale, "pix.ttf");
         FontHelper.setFont(checkmale, "pix.ttf");
+        FontHelper.setFont(btnReset, "pix.ttf");
+
+        btnGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CombatActivity.class);
+                String name1 = player1.getText().toString();
+                String name2 = player2.getText().toString();
+                HeroModel hero1 = new HeroModel(img1, name1, dur1, combat1);
+                HeroModel hero2 = new HeroModel(img2, name2, dur2, combat2);
+
+                intent.putExtra("hero1", hero1);
+                intent.putExtra("hero2", hero2);
+                MainActivity.this.startActivity(intent);
+
+
+            }
+        });
+
+
     }
+
 }

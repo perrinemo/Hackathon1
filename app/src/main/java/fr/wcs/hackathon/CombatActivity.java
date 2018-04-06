@@ -64,12 +64,11 @@ public class CombatActivity extends AppCompatActivity {
         final int combatP1 = 5;
         final int combatP2 = 7;
 
-        final HeroModel player1 = new HeroModel(lifeP1, combatP1);
-        final HeroModel player2 = new HeroModel(lifeP2, combatP2);
+
 
         btnFight = findViewById(R.id.btn_fight);
 
-        btnFight.setOnClickListener(new View.OnClickListener() {
+       /* btnFight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 combatPlayer1.setVisibility(View.VISIBLE);
@@ -80,7 +79,7 @@ public class CombatActivity extends AppCompatActivity {
                     // TODO : ajouter l'intent vers la page winner/looser
                 }
             }
-        });
+        });*/
 
 
         FontHelper.setFont(btnFight, "pix.ttf");
