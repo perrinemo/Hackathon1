@@ -9,7 +9,7 @@
     android:background="@drawable/backgroundend">>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_winner"
         android:layout_width="172dp"
         android:layout_height="151dp"
         android:layout_marginEnd="8dp"
@@ -17,11 +17,11 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/text_winner"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/img_looser"
         android:layout_width="157dp"
         android:layout_height="153dp"
         android:layout_marginEnd="8dp"
@@ -29,11 +29,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/text_looser"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/text_winner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -47,7 +47,7 @@
         tools:text="Winner" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/text_looser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/img_winner"
         tools:text="Looser" />
 
     <ImageView
@@ -68,18 +68,31 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="76dp"
         android:rotationY="40"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:srcCompat="@drawable/troph_" />
+        
+        app:srcCompat="@drawable/troph_" 
+        app:layout_constraintTop_toBottomOf="@+id/text_winner"/>
+
+       
+    
+
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="69dp"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="64dp"
         android:layout_marginTop="88dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:srcCompat="@drawable/dead2" />
+ 
+        app:srcCompat="@drawable/dead2" 
+
+        
+        app:layout_constraintTop_toBottomOf="@+id/text_looser"
+  
+        />
+
 
 </android.support.constraint.ConstraintLayout>
