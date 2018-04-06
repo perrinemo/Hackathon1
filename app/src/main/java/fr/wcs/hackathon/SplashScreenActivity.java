@@ -10,9 +10,9 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        MediaPlayer soundSplash = MediaPlayer.create(this, R.raw.SonSplashScreen);
+        MediaPlayer soundSplash = MediaPlayer.create(this, R.raw.sonsplashscreen);
         soundSplash.start();
 
-                //  final MediaPlayer fightSound = MediaPlayer.create(this, R.raw.fight);
+        
     }
 }
