@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     int combat2;
     String img1;
     String img2;
+    Button btnGo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<HeroModel> allHeroesList = new ArrayList<>();
         final ArrayList<HeroModel> femaleHeroinesList = new ArrayList<>();
         final ArrayList<HeroModel> maleHeroesList = new ArrayList<>();
+        btnGo = findViewById(R.id.btn_go);
+
 
         final ListAdapter allHeoresAdapter = new ListAdapter(MainActivity.this, allHeroesList, new ListAdapter.HeroClickListerner() {
             @Override
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     dur2 = hero.getDurability();
                     combat2 = hero.getCombat();
                     img2 = hero.getImage();
-
+                    btnGo.setEnabled(true);
                 }
             }
         });
@@ -103,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     dur2 = hero.getDurability();
                     combat2 = hero.getCombat();
                     img2 = hero.getImage();
-
+                    btnGo.setEnabled(true);
                 }
 
             }
@@ -125,8 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     dur2 = hero.getDurability();
                     combat2 = hero.getCombat();
                     img2 = hero.getImage();
-                    mP1Selected = false;
-
+                    btnGo.setEnabled(true);
                 }
 
             }
@@ -233,7 +235,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button btnGo = findViewById(R.id.btn_go);
 
 
         FontHelper.setFont(player1, "pix.ttf");
@@ -241,6 +242,7 @@ public class MainActivity extends AppCompatActivity {
         FontHelper.setFont(btnGo, "pix.ttf");
         FontHelper.setFont(checkfemale, "pix.ttf");
         FontHelper.setFont(checkmale, "pix.ttf");
+
 
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -258,6 +260,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
     }

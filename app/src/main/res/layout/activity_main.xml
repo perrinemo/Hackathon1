@@ -111,7 +111,8 @@
         android:text="GO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genre" />
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        android:enabled="false"/>
 
 </android.support.constraint.ConstraintLayout>
     <ListView

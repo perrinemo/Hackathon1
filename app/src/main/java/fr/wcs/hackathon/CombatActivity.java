@@ -75,7 +75,30 @@ public class CombatActivity extends AppCompatActivity {
                 if (hero1.getDurability() > 0 && hero2.getDurability() > 0) {
                     fight(hero1, hero2);
                 } else {
-                    // TODO : ajouter l'intent vers la page winner/looser
+                    Intent intent = new Intent(CombatActivity.this, EndOfFight.class);
+
+                    HeroModel hero11 = new HeroModel(hero1.getImage(), hero1.getName(), hero1.getDurability(), hero1.getCombat());
+                    HeroModel hero22 = new HeroModel(hero2.getImage(), hero2.getName(), hero2.getDurability(), hero2.getCombat());
+
+                    String durab1 = String.valueOf(hero1.getDurability());
+                    String durab2 = String.valueOf(hero2.getDurability());
+
+                    String name1 = hero1.getName();
+                    String name2 = hero2.getName();
+
+                    String img1 = hero1.getImage();
+                    String img2 = hero2.getImage();
+
+                    intent.putExtra("durab1", durab1);
+                    intent.putExtra("durab2", durab2);
+
+                    intent.putExtra("name1", name1);
+                    intent.putExtra("name2", name2);
+
+                    intent.putExtra("img1", img1);
+                    intent.putExtra("img2", img2);
+
+                    startActivity(intent);
                 }
             }
         });
