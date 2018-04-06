@@ -1,5 +1,6 @@
 package fr.wcs.hackathon;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,15 @@ public class CombatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
+
+        final MediaPlayer fightSound = MediaPlayer.create(this, R.raw.fight);
+        Button btnFight = findViewById(R.id.btn_fight);
+        btnFight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fightSound.start();
+            }
+        });
 
         final TextView textLifeP1 = findViewById(R.id.text_life_p1);
         final TextView textLifeP2 = findViewById(R.id.text_life_p2);
