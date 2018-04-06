@@ -11,7 +11,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"><![CDATA[
 
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -22,19 +24,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
 
-    <ImageView
-        android:id="@+id/img_player_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
 
-      
+
+        ]]>
 
         <ImageView
             android:id="@+id/img_player_one"
@@ -90,9 +82,9 @@
             android:layout_marginLeft="110dp"
             android:layout_marginTop="135dp"
             android:orientation="vertical"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="invisible">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/img_degat_p1"
