@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -54,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<HeroModel> allHeroesList = new ArrayList<>();
         final ArrayList<HeroModel> femaleHeroinesList = new ArrayList<>();
         final ArrayList<HeroModel> maleHeroesList = new ArrayList<>();
-        final String p1 = player1.getText().toString();
-        final String p2 = player2.getText().toString();
 
         final ListAdapter allHeoresAdapter = new ListAdapter(MainActivity.this, allHeroesList, new ListAdapter.HeroClickListerner() {
             @Override
@@ -199,50 +198,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-      /*  heroList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (playerOneImage.getContentDescription() == null && playerTwoImage.getContentDescription() == null) {
-                    if (checkfemale.isChecked()){
-                        player1.setText(femaleHeroinesList.get(position).getName());
-                        Glide.with(MainActivity.this).load(femaleHeroinesList.get(position).getImage()).into(playerOneImage);
-                    }
-                    else if (checkmale.isChecked()) {
-                        player1.setText(maleHeroesList.get(position).getName());
-                        Glide.with(MainActivity.this).load(maleHeroesList.get(position).getImage()).into(playerOneImage);
-                    }
-                    else {
-                        player1.setText(allHeroesList.get(position).getName());
-                        Glide.with(MainActivity.this).load(allHeroesList.get(position).getImage()).into(playerOneImage);
-                    }
-                }
-                else if (playerOneImage.getContentDescription() != null && playerTwoImage.getContentDescription() == null) {
-                    if (checkfemale.isChecked()){
-                        player1.setText(femaleHeroinesList.get(position).getName());
-                        Glide.with(MainActivity.this).load(femaleHeroinesList.get(position).getImage()).into(playerOneImage);
-                    }
-                    else if (checkmale.isChecked()) {
-                        player1.setText(maleHeroesList.get(position).getName());
-                        Glide.with(MainActivity.this).load(maleHeroesList.get(position).getImage()).into(playerOneImage);
-                    }
-                    else {
-                        player1.setText(allHeroesList.get(position).getName());
-                        Glide.with(MainActivity.this).load(allHeroesList.get(position).getImage()).into(playerOneImage);
-                    }
-                    player2.setText(allHeroesList.get(position).getName());
-                    Glide.with(MainActivity.this).load(allHeroesList.get(position).getImage()).into(playerTwoImage);
-                }
+        Button btnGo = findViewById(R.id.btn_go);
 
-               /* if (searchView.getContentDescription() != null) {
-                    player1.setText(filteredHeroes.get(position).getName());
-                    Glide.with(MainActivity.this).load(filteredHeroes.get(position).getImage()).into(playerOneImage);                }
-
-            }
-        });*/
-
+        FontHelper.setFont(player1, "pix.ttf");
+        FontHelper.setFont(player2, "pix.ttf");
+        FontHelper.setFont(btnGo, "pix.ttf");
+        FontHelper.setFont(checkfemale, "pix.ttf");
+        FontHelper.setFont(checkmale, "pix.ttf");
     }
-
-
-
 }
