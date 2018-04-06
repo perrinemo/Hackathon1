@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         final ListAdapter maleHeroesAdapter = new ListAdapter(MainActivity.this, maleHeroesList);
         final CheckBox checkfemale = findViewById(R.id.check_female);
         final CheckBox checkmale = findViewById(R.id.check_male);
+        final SearchView searchView = findViewById(R.id.searchView);
 
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
                 Request.Method.GET, url, null,
@@ -66,23 +68,21 @@ public class MainActivity extends AppCompatActivity {
                                 JSONObject heroImages = heroResponse.getJSONObject("images");
                                 JSONObject heroStats = heroResponse.getJSONObject("powerstats");
                                 JSONObject heroAppearance = heroResponse.getJSONObject("appearance");
-                                // String image_url = heroImages.getString("sm");
+                                String image_url = heroImages.getString("sm");
                                 String heroName = heroResponse.getString("name");
                                 String heroGender = heroAppearance.getString("gender");
                                 int life = heroStats.getInt("durability");
                                 int damage = heroStats.getInt("combat");
                                 int speed = heroStats.getInt("speed");
                                 int intel = heroStats.getInt("intelligence");
-                                allHeroesList.add(new HeroModel(null, heroName, heroGender, life, damage, speed, intel));
+                                allHeroesList.add(new HeroModel(image_url, heroName, heroGender, life, damage, speed, intel));
 
 
-                                if (heroGender == "Female") {
-                                    femaleHeroinesList.add(new HeroModel(null, heroName, heroGender, life, damage, speed, intel));
+                                if (heroGender.equals("Female")) {
+                                    femaleHeroinesList.add(new HeroModel(image_url, heroName, heroGender, life, damage, speed, intel));
                                 }
-                                else {
-                                    if (heroGender == "Male") {
-                                        maleHeroesList.add(new HeroModel(null, heroName, heroGender, life, damage, speed, intel));
-                                    }
+                                else if (heroGender.equals("Male")) {
+                                    maleHeroesList.add(new HeroModel(image_url, heroName, heroGender, life, damage, speed, intel));
                                 }
                             }
                             heroList.setAdapter(allHeoresAdapter);
@@ -100,8 +100,10 @@ public class MainActivity extends AppCompatActivity {
 
                                     checkmale.setChecked(false);
                                     heroList.setAdapter(femaleHeroinesAdapter);
-                                }
+                                }else {
+
                                     heroList.setAdapter(allHeoresAdapter);
+                                }
                             }
                         });
 
@@ -113,12 +115,14 @@ public class MainActivity extends AppCompatActivity {
 
                                     checkfemale.setChecked(false);
                                     heroList.setAdapter(maleHeroesAdapter);
+                                }else {
+                                    heroList.setAdapter(allHeoresAdapter);
                                 }
-                                heroList.setAdapter(allHeoresAdapter);
                             }
                         });
                         heroList.setAdapter(allHeoresAdapter);
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -128,5 +132,26 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
         requestQueue.add(jsonObjectRequest);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                allHeoresAdapter.getFilter().filter(newText);
+                femaleHeroinesAdapter.getFilter().filter(newText);
+                maleHeroesAdapter.getFilter().filter(newText);
+
+                return false;
+
+            }
+        });
     }
+
+
+
 }
