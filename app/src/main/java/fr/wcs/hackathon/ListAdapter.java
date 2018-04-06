@@ -98,6 +98,7 @@ public class ListAdapter extends BaseAdapter implements Filterable{
         heroSpeed.setText(String.valueOf(hero.getSpeed()));
         heroIntel.setText(String.valueOf(hero.getIntelligence()));
 
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,6 +151,13 @@ public class ListAdapter extends BaseAdapter implements Filterable{
 
             }
         });*/
+
+        FontHelper.setFont(heroName, "pix.ttf");
+        FontHelper.setFont(heroDurability, "pix.ttf");
+        FontHelper.setFont(heroCombat, "pix.ttf");
+        FontHelper.setFont(heroSpeed, "pix.ttf");
+        FontHelper.setFont(heroIntel, "pix.ttf");
+
 
         return convertView;
 
