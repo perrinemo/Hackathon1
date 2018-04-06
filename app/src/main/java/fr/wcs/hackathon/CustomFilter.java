@@ -3,12 +3,13 @@ package fr.wcs.hackathon;
 import android.content.Context;
 import android.widget.Filter;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 /**
  * Created by wilder on 06/04/18.
  */
-
 public class CustomFilter extends Filter{
 
     private ArrayList<HeroModel> filterList;
@@ -24,14 +25,14 @@ public class CustomFilter extends Filter{
     /** Création de la searchview qui va nous permettre de chercher un monstre par son nom
      * La searchview créait une nouvelle liste de monstres en les filtrant
      */
-
+    public ArrayList<HeroModel> filteredHeroes;
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
         FilterResults results = new FilterResults();
 
         if (constraint != null && constraint.length() > 0) {
             constraint = constraint.toString().toUpperCase();
-            ArrayList<HeroModel> filteredHeroes = new ArrayList<>();
+            filteredHeroes = new ArrayList<>();
 
             for (int i = 0; i < filterList.size(); i++) {
                 if (filterList.get(i).getName().toUpperCase().contains(constraint)) {
@@ -53,5 +54,7 @@ public class CustomFilter extends Filter{
         adapter.heroModel = (ArrayList<HeroModel>) results.values;
         adapter.notifyDataSetChanged();
     }
+
+
 }
 

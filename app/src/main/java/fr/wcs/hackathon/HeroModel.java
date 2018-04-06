@@ -17,6 +17,10 @@ public class HeroModel implements Parcelable {
     private int speed;
     private int intelligence;
 
+    public HeroModel(String image, String name) {
+        this.image = image;
+        this.name = name;
+    }
 
     public HeroModel(String image, String name, String genre, int durability, int combat, int speed, int intelligence) {
         this.image = image;
