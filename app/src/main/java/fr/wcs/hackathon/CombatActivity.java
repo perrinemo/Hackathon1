@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import org.w3c.dom.Text;
 
 import java.util.Random;
@@ -33,19 +35,20 @@ public class CombatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
+
+        final HeroModel hero1 = getIntent().getExtras().getParcelable("hero1");
+        final HeroModel hero2 = getIntent().getExtras().getParcelable("hero2");
+
         MediaPlayer fightsound = MediaPlayer.create(this, R.raw.fightsound);
         MediaPlayer combatSound = MediaPlayer.create(this, R.raw.combat);
         fightsound.start();
         combatSound.start();
-        Button btnFight = findViewById(R.id.btn_fight);
-
 
         textLifeP1 = findViewById(R.id.text_life_p1);
         textLifeP2 = findViewById(R.id.text_life_p2);
 
         final LinearLayout combatPlayer1 = findViewById(R.id.combat_p1);
         final LinearLayout combatPlayer2 = findViewById(R.id.combat_p2);
-
 
         textLifeP1 = findViewById(R.id.text_life_p1);
         textLifeP2 = findViewById(R.id.text_life_p2);
@@ -55,31 +58,27 @@ public class CombatActivity extends AppCompatActivity {
         ivP1 = findViewById(R.id.img_player_one);
         ivP2 = findViewById(R.id.img_player_two);
 
-        final int lifeP1 = 92;
-        final int lifeP2 = 52;
-
-        textLifeP1.setText(String.valueOf(lifeP1));
-        textLifeP2.setText(String.valueOf(lifeP2));
-
-        final int combatP1 = 5;
-        final int combatP2 = 7;
+        Glide.with(CombatActivity.this).load(hero1.getImage()).into(ivP1);
+        Glide.with(CombatActivity.this).load(hero2.getImage()).into(ivP2);
 
 
+        textLifeP1.setText(String.valueOf(hero1.getDurability()));
+        textLifeP2.setText(String.valueOf(hero2.getDurability()));
 
-        btnFight = findViewById(R.id.btn_fight);
+        Button btnFight = findViewById(R.id.btn_fight);
 
-       /* btnFight.setOnClickListener(new View.OnClickListener() {
+        btnFight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 combatPlayer1.setVisibility(View.VISIBLE);
                 combatPlayer2.setVisibility(View.VISIBLE);
-                if (player1.getDurability() > 0 && player2.getDurability() > 0) {
-                    fight(player1, player2);
+                if (hero1.getDurability() > 0 && hero2.getDurability() > 0) {
+                    fight(hero1, hero2);
                 } else {
                     // TODO : ajouter l'intent vers la page winner/looser
                 }
             }
-        });*/
+        });
 
 
         FontHelper.setFont(btnFight, "pix.ttf");
@@ -90,24 +89,6 @@ public class CombatActivity extends AppCompatActivity {
     }
 
     public void fight(HeroModel player1, HeroModel player2) {
-/*
-        LinearLayout linearLayoutP1 = findViewById(R.id.combat_p1);
-        LinearLayout linearLayoutP2 = findViewById(R.id.combat_p2);
-
-
-        int y = ivP1.getWidth();
-        int x = ivP1.getHeight();
-
-        Random r = new Random();
-        int i2 = r.nextInt(800 - y);
-
-        Random t = new Random();
-        int i1 = t.nextInt(500 - x);
-
-        linearLayoutP1.setX(i1);
-        linearLayoutP1.setY(i2);
-
-*/
 
         ImageView boom1 = findViewById(R.id.img_degat_p1);
         ImageView boom2 = findViewById(R.id.img_degat_p2);
@@ -116,15 +97,15 @@ public class CombatActivity extends AppCompatActivity {
         ImageView critique2 = findViewById(R.id.img_critique_2);
 
         Random degats = new Random();
-        int p1Degat = degats.nextInt(player1.getCombat());
-        int p2Degat = degats.nextInt(player2.getCombat());
+        int p1Degat = degats.nextInt(player1.getCombat()) / 2;
+        int p2Degat = degats.nextInt(player2.getCombat()) / 2;
 
         player2.setDurability(player2.getDurability() - p1Degat);
         if (p1Degat == 0) {
             textDegatP2.setText(R.string.esquive);
             boom2.setVisibility(View.GONE);
             critique2.setVisibility(View.INVISIBLE);
-        } else if (p1Degat == player1.getCombat() -1) {
+        } else if (p1Degat == (player1.getCombat() /2) -1) {
             textDegatP2.setText(R.string.coup_critique);
             boom2.setVisibility(View.GONE);
             critique2.setVisibility(View.VISIBLE);
@@ -144,7 +125,7 @@ public class CombatActivity extends AppCompatActivity {
                 textDegatP1.setText(R.string.esquive);
                 boom1.setVisibility(View.GONE);
                 critique1.setVisibility(View.INVISIBLE);
-            } else if (p2Degat == player2.getCombat() - 1) {
+            } else if (p2Degat == (player2.getCombat() / 2) - 1) {
                 textDegatP1.setText(R.string.coup_critique);
                 boom1.setVisibility(View.GONE);
                 critique1.setVisibility(View.VISIBLE);

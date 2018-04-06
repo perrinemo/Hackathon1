@@ -30,10 +30,10 @@
 
         <ImageView
             android:id="@+id/img_player_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,10 +53,9 @@
 
         <ImageView
             android:id="@+id/img_critique_1"
-            android:layout_width="80sp"
-            android:layout_height="80sp"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
             android:layout_marginBottom="8dp"
-            android:layout_marginLeft="100dp"
             android:layout_marginTop="8dp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -88,8 +87,9 @@
 
             <ImageView
                 android:id="@+id/img_degat_p1"
-                android:layout_width="25sp"
-                android:layout_height="25sp"
+                android:layout_width="50sp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="50dp"
                 app:srcCompat="@drawable/boompix" />
 
             <TextView
@@ -98,7 +98,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textAlignment="center"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
                 android:textSize="10sp"
                 tools:text="-25" />
 
@@ -113,10 +114,10 @@
 
         <ImageView
             android:id="@+id/img_player_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginRight="100dp"
+            android:layout_marginEnd="80dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -135,10 +136,9 @@
 
         <ImageView
             android:id="@+id/img_critique_2"
-            android:layout_width="80sp"
-            android:layout_height="80sp"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
             android:layout_marginBottom="8dp"
-            android:layout_marginRight="100dp"
             android:layout_marginTop="8dp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -170,8 +170,9 @@
 
             <ImageView
                 android:id="@+id/img_degat_p2"
-                android:layout_width="25sp"
-                android:layout_height="23dp"
+                android:layout_width="50sp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="50dp"
                 app:srcCompat="@drawable/boompix" />
 
             <TextView
@@ -180,7 +181,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textAlignment="center"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
                 android:textSize="10sp"
                 tools:text="-25" />
 
