@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.wcs.hackathon.SplashScreenActivity">
+    tools:context="fr.wcs.hackathon.SplashScreenActivity"
+    android:background="@drawable/imgsplashscreen3"
+    >
 
 </android.support.constraint.ConstraintLayout>
