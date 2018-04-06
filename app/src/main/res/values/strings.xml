@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Hackathon</string>
     <string name="fight">Fight</string>
+    <string name="degat">-%s</string>
+    <string name="esquive">Esquive</string>
+    <string name="coup_critique">Coup"\n"critique</string>
 </resources>
