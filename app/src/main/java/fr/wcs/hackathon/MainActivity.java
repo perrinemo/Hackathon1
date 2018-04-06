@@ -42,17 +42,33 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         String url = "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json";
         final TextView player1 = findViewById(R.id.tv_player1);
+        final TextView player2 = findViewById(R.id.tv_player2);
+        final TextView vs = findViewById(R.id.tv_vs);
+        final TextView genre = findViewById(R.id.tv_genre);
+
         final ListView heroList = findViewById(R.id.lv_heroes);
+
         final ImageView playerOneImage = findViewById(R.id.img_player_one);
+
         final ArrayList<HeroModel> allHeroesList = new ArrayList<>();
         final ArrayList<HeroModel> femaleHeroinesList = new ArrayList<>();
         final ArrayList<HeroModel> maleHeroesList = new ArrayList<>();
+
         final ListAdapter allHeoresAdapter = new ListAdapter(MainActivity.this, allHeroesList);
         final ListAdapter femaleHeroinesAdapter = new ListAdapter(MainActivity.this, femaleHeroinesList);
         final ListAdapter maleHeroesAdapter = new ListAdapter(MainActivity.this, maleHeroesList);
+
         final CheckBox checkfemale = findViewById(R.id.check_female);
         final CheckBox checkmale = findViewById(R.id.check_male);
+
         final SearchView searchView = findViewById(R.id.searchView);
+
+        FontHelper.setFont(player1, "pix.ttf");
+        FontHelper.setFont(player2, "pix.ttf");
+        FontHelper.setFont(vs, "pix.ttf");
+        FontHelper.setFont(checkfemale, "pix.ttf");
+        FontHelper.setFont(checkmale, "pix.ttf");
+        FontHelper.setFont(genre, "pix.ttf");
 
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
                 Request.Method.GET, url, null,
