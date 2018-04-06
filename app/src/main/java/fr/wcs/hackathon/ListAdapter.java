@@ -69,6 +69,13 @@ public class ListAdapter extends BaseAdapter implements Filterable{
         heroCombat.setText(String.valueOf(hero.getCombat()));
         heroSpeed.setText(String.valueOf(hero.getSpeed()));
         heroIntel.setText(String.valueOf(hero.getIntelligence()));
+
+        FontHelper.setFont(heroName, "pix.ttf");
+        FontHelper.setFont(heroDurability, "pix.ttf");
+        FontHelper.setFont(heroCombat, "pix.ttf");
+        FontHelper.setFont(heroSpeed, "pix.ttf");
+        FontHelper.setFont(heroIntel, "pix.ttf");
+
         return convertView;
 
     }

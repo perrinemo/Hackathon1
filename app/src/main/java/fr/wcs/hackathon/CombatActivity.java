@@ -44,8 +44,8 @@ public class CombatActivity extends AppCompatActivity {
             }
         });
 
-        final TextView textLifeP1 = findViewById(R.id.text_life_p1);
-        final TextView textLifeP2 = findViewById(R.id.text_life_p2);
+        textLifeP1 = findViewById(R.id.text_life_p1);
+        textLifeP2 = findViewById(R.id.text_life_p2);
 
         final LinearLayout combatPlayer1 = findViewById(R.id.combat_p1);
         final LinearLayout combatPlayer2 = findViewById(R.id.combat_p2);
@@ -71,7 +71,7 @@ public class CombatActivity extends AppCompatActivity {
         final HeroModel player1 = new HeroModel(lifeP1, combatP1);
         final HeroModel player2 = new HeroModel(lifeP2, combatP2);
 
-        final Button btnFight = findViewById(R.id.btn_fight);
+        btnFight = findViewById(R.id.btn_fight);
 
         btnFight.setOnClickListener(new View.OnClickListener() {
             @Override
