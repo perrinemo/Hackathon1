@@ -8,6 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -22,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +37,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    public boolean mP1Selected = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +47,57 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         String url = "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json";
         final TextView player1 = findViewById(R.id.tv_player1);
+        final TextView player2 = findViewById(R.id.tv_player2);
         final ListView heroList = findViewById(R.id.lv_heroes);
-        final ImageView playerOneImage = findViewById(R.id.img_player_one);
+        final ImageView playerOneImage = findViewById(R.id.iv_player_one);
+        final ImageView playerTwoImage = findViewById(R.id.iv_player_two);
         final ArrayList<HeroModel> allHeroesList = new ArrayList<>();
         final ArrayList<HeroModel> femaleHeroinesList = new ArrayList<>();
         final ArrayList<HeroModel> maleHeroesList = new ArrayList<>();
-        final ListAdapter allHeoresAdapter = new ListAdapter(MainActivity.this, allHeroesList);
-        final ListAdapter femaleHeroinesAdapter = new ListAdapter(MainActivity.this, femaleHeroinesList);
-        final ListAdapter maleHeroesAdapter = new ListAdapter(MainActivity.this, maleHeroesList);
+        final String p1 = player1.getText().toString();
+        final String p2 = player2.getText().toString();
+
+        final ListAdapter allHeoresAdapter = new ListAdapter(MainActivity.this, allHeroesList, new ListAdapter.HeroClickListerner() {
+            @Override
+            public void onClick(HeroModel hero) {
+                if (!mP1Selected) {
+                    mP1Selected = true;
+                    player1.setText(hero.getName());
+                    Glide.with(MainActivity.this).load(hero.getImage()).into(playerOneImage);
+                } else {
+                    player2.setText(hero.getName());
+                    Glide.with(MainActivity.this).load(hero.getImage()).into(playerTwoImage);
+                }
+            }
+        });
+        final ListAdapter femaleHeroinesAdapter = new ListAdapter(MainActivity.this, femaleHeroinesList, new ListAdapter.HeroClickListerner() {
+            @Override
+            public void onClick(HeroModel hero) {
+                if (!mP1Selected) {
+                    mP1Selected = true;
+                    player1.setText(hero.getName());
+                    Glide.with(MainActivity.this).load(hero.getImage()).into(playerOneImage);
+                } else {
+                    player2.setText(hero.getName());
+                    Glide.with(MainActivity.this).load(hero.getImage()).into(playerTwoImage);
+                }
+
+            }
+        });
+        final ListAdapter maleHeroesAdapter = new ListAdapter(MainActivity.this, maleHeroesList, new ListAdapter.HeroClickListerner() {
+            @Override
+            public void onClick(HeroModel hero) {
+                if (!mP1Selected) {
+                    mP1Selected = true;
+                    player1.setText(hero.getName());
+                    Glide.with(MainActivity.this).load(hero.getImage()).into(playerOneImage);
+                } else {
+                    player2.setText(hero.getName());
+                    Glide.with(MainActivity.this).load(hero.getImage()).into(playerTwoImage);
+                }
+
+            }
+        });
         final CheckBox checkfemale = findViewById(R.id.check_female);
         final CheckBox checkmale = findViewById(R.id.check_male);
         final SearchView searchView = findViewById(R.id.searchView);
@@ -150,6 +198,49 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+      /*  heroList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (playerOneImage.getContentDescription() == null && playerTwoImage.getContentDescription() == null) {
+                    if (checkfemale.isChecked()){
+                        player1.setText(femaleHeroinesList.get(position).getName());
+                        Glide.with(MainActivity.this).load(femaleHeroinesList.get(position).getImage()).into(playerOneImage);
+                    }
+                    else if (checkmale.isChecked()) {
+                        player1.setText(maleHeroesList.get(position).getName());
+                        Glide.with(MainActivity.this).load(maleHeroesList.get(position).getImage()).into(playerOneImage);
+                    }
+                    else {
+                        player1.setText(allHeroesList.get(position).getName());
+                        Glide.with(MainActivity.this).load(allHeroesList.get(position).getImage()).into(playerOneImage);
+                    }
+                }
+                else if (playerOneImage.getContentDescription() != null && playerTwoImage.getContentDescription() == null) {
+                    if (checkfemale.isChecked()){
+                        player1.setText(femaleHeroinesList.get(position).getName());
+                        Glide.with(MainActivity.this).load(femaleHeroinesList.get(position).getImage()).into(playerOneImage);
+                    }
+                    else if (checkmale.isChecked()) {
+                        player1.setText(maleHeroesList.get(position).getName());
+                        Glide.with(MainActivity.this).load(maleHeroesList.get(position).getImage()).into(playerOneImage);
+                    }
+                    else {
+                        player1.setText(allHeroesList.get(position).getName());
+                        Glide.with(MainActivity.this).load(allHeroesList.get(position).getImage()).into(playerOneImage);
+                    }
+                    player2.setText(allHeroesList.get(position).getName());
+                    Glide.with(MainActivity.this).load(allHeroesList.get(position).getImage()).into(playerTwoImage);
+                }
+
+               /* if (searchView.getContentDescription() != null) {
+                    player1.setText(filteredHeroes.get(position).getName());
+                    Glide.with(MainActivity.this).load(filteredHeroes.get(position).getImage()).into(playerOneImage);                }
+
+            }
+        });*/
+
     }
 
 
