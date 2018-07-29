@@ -1,14 +1,24 @@
-# Hackathon1
-Projet réalisé dans le cadre d'un hackathon de 24h.
+# SuperheroesFighters
 
-Le but était de présenter une application android de jeu versus, avec le choix des personnages, un système de point de vie, un tour par tout jusqu'au KO et le résultat du combat.
-L'objectif était d'utiliser une API de superhéros, de travailler avec les différentes données dedans pour rendre les combats plus funs et de proposer des fonctionnalités originales.
+### What is SuperheroesFighters
+SuperheroesFighters is an Android superheroes fighting app
 
-Quelques fonctionnalités :
-- splashscreen
-- ListView avec l'ensemble des héros de l'API (avec leur photo et leurs stats)
-- barre de recherche par nom de héros
-- tri par genre (male ou female)
-- points de dégâts aléatoires (où 0 est remplacé par "Esquive" et les points de dégâts max par "Coup critique"
-- points de vie dégressifs à chaque tour
-- affichage du winner et du looser avec possibilité de commencer un nouveau combat
+The goal was to present an android game versus application, with the choice of characters, a life point system, a round by all up to KO and the result of the fight.
+The goal was to use a superhero API, to work with the different data in to make the fights more fun and to offer original features.
+
+Some features:
+* Splashscreen
+* ListView with all the heroes of the API (with their photo and stats)
+* Search bar by name of hero
+* Sort by gender (male or female)
+* Random damage points (where 0 is replaced by "Dodge" and the max damage points by "Critical Strike"
+* Tapering health points at each turn
+* Display of winner and looser with possibility of starting a new fight
+
+### When was SuperheroesFighters made
+SuperheroesFighters was made during a 24h hackthon in April 2018 at the wild code school of Toulouse.
+
+### Language used and Environment
+* Java
+* Android Studio 
+* Rest API
